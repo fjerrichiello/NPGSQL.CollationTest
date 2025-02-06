@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPGSQL.Collation.Api", "NPGSQL.Collation.API\NPGSQL.Collation.Api.csproj", "{9CD3866D-5E33-43E8-B93D-F090A22240AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPGSQL.Collation.UnitTests", "NPGSQL.Collation.UnitTests\NPGSQL.Collation.UnitTests.csproj", "{09F1183D-F1C5-4E55-BDAD-B94F3B90DA60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CD3866D-5E33-43E8-B93D-F090A22240AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CD3866D-5E33-43E8-B93D-F090A22240AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CD3866D-5E33-43E8-B93D-F090A22240AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CD3866D-5E33-43E8-B93D-F090A22240AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F1183D-F1C5-4E55-BDAD-B94F3B90DA60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F1183D-F1C5-4E55-BDAD-B94F3B90DA60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F1183D-F1C5-4E55-BDAD-B94F3B90DA60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F1183D-F1C5-4E55-BDAD-B94F3B90DA60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

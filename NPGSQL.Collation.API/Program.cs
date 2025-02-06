@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NPGSQL.Collation.API.Persistence;
+using NPGSQL.Collation.API.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,21 +29,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapGet("/authors/{name}",
-    async (ApplicationDbContext db, string name) =>
-    {
-        return await db.Authors.FirstOrDefaultAsync(x => x.AuthorId == name);
-    });
+    async (IAuthorRepository authorRepository, string name) => await authorRepository.GetAuthorAsync(name));
 
 app.MapGet("/books/author/{name}",
-    async (ApplicationDbContext db, string name) =>
-    {
-        return await db.Books.Where(x => x.AuthorId == name).ToListAsync();
-    });
+    async (IBookRepository bookRepository, string name) => await bookRepository.GetBooksByAuthorAsync(name));
 
 app.MapGet("/books/{name}",
-    async (ApplicationDbContext db, string name) =>
-    {
-        return await db.Books.FirstOrDefaultAsync(x => x.Title == name);
-    });
+    async (IBookRepository bookRepository, string name) => await bookRepository.GetBookAsync(name));
 
 app.Run();

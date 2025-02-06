@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace NPGSQL.Collation.API.Persistence.Migrations
+namespace NPGSQL.Collation.Api.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -14,7 +14,7 @@ namespace NPGSQL.Collation.API.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("Npgsql:CollationDefinition:case-insensitive", "en-u-ks-primary,en-u-ks-primary,icu,False");
+                .Annotation("Npgsql:CollationDefinition:NOCASE", "en-u-ks-primary,en-u-ks-primary,icu,False");
 
             migrationBuilder.CreateTable(
                 name: "Authors",
@@ -22,7 +22,7 @@ namespace NPGSQL.Collation.API.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuthorId = table.Column<string>(type: "text", nullable: false, collation: "case-insensitive")
+                    AuthorId = table.Column<string>(type: "text", nullable: false, collation: "NOCASE")
                 },
                 constraints: table =>
                 {
@@ -35,8 +35,8 @@ namespace NPGSQL.Collation.API.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuthorId = table.Column<string>(type: "text", nullable: false, collation: "case-insensitive"),
-                    Title = table.Column<string>(type: "text", nullable: false, collation: "case-insensitive")
+                    AuthorId = table.Column<string>(type: "text", nullable: false, collation: "NOCASE"),
+                    Title = table.Column<string>(type: "text", nullable: false, collation: "NOCASE")
                 },
                 constraints: table =>
                 {

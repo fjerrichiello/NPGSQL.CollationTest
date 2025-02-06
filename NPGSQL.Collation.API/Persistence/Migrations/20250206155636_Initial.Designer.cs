@@ -8,10 +8,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace NPGSQL.Collation.API.Persistence.Migrations
+namespace NPGSQL.Collation.Api.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250204215006_Initial")]
+    [Migration("20250206155636_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace NPGSQL.Collation.API.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:CollationDefinition:case-insensitive", "en-u-ks-primary,en-u-ks-primary,icu,False")
+                .HasAnnotation("Npgsql:CollationDefinition:NOCASE", "en-u-ks-primary,en-u-ks-primary,icu,False")
                 .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -36,7 +36,7 @@ namespace NPGSQL.Collation.API.Persistence.Migrations
                     b.Property<string>("AuthorId")
                         .IsRequired()
                         .HasColumnType("text")
-                        .UseCollation("case-insensitive");
+                        .UseCollation("NOCASE");
 
                     b.HasKey("Id");
 
@@ -93,12 +93,12 @@ namespace NPGSQL.Collation.API.Persistence.Migrations
                     b.Property<string>("AuthorId")
                         .IsRequired()
                         .HasColumnType("text")
-                        .UseCollation("case-insensitive");
+                        .UseCollation("NOCASE");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text")
-                        .UseCollation("case-insensitive");
+                        .UseCollation("NOCASE");
 
                     b.HasKey("Id");
 

@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.HasCollation("case-insensitive",locale: "en-u-ks-primary", provider: "icu", deterministic: false);
+        modelBuilder.HasCollation("NOCASE",locale: "en-u-ks-primary", provider: "icu", deterministic: false);
 
         modelBuilder.Entity<Book>()
             .HasIndex(b => new { b.AuthorId, b.Title })
@@ -38,7 +38,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Author>(e =>
         {
             e.Property(p => p.AuthorId)
-                .UseCollation("case-insensitive");
+                .UseCollation("NOCASE");
 
             e.HasData(authors);
         });
@@ -46,10 +46,10 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Book>(e =>
         {
             e.Property(p => p.AuthorId)
-                .UseCollation("case-insensitive");
+                .UseCollation("NOCASE");
             
             e.Property(p => p.Title)
-                .UseCollation("case-insensitive");
+                .UseCollation("NOCASE");
         });
     }
 }
